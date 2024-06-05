@@ -14,7 +14,7 @@ Dataset:
 source/credits:https://huggingface.co/datasets/HazSylvia/Fitness_Unformatted
 
 LLM used:
-Llama3
+Llama3 has been used
 
 Embedding Model:
 SentenceTransformer
