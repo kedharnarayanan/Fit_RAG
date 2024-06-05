@@ -1,0 +1,3 @@
+git add .github/workflows/deploy-to-hf.yml
+git commit -m "Add GitHub Action to deploy to Hugging Face Spaces"
+git push origin main
