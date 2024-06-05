@@ -25,5 +25,4 @@ jobs:
         run: |
           python -m pip install --upgrade huggingface_hub
           huggingface-cli login --token $HF_TOKEN
-          huggingface-cli repo create spaces/your-username/your-space-name --type streamlit  # or gradio
-          huggingface-cli repo push spaces/your-username/your-space-name
+          huggingface-cli repo push spaces/KedharNarayanan/FIT_RAG
