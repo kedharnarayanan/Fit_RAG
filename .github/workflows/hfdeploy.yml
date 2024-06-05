@@ -1,28 +1,38 @@
-name: Deploy to Hugging Face Spaces
+name: Push Changes to Hugging Face Space
 
 on:
   push:
     branches:
-      - main  # Change this to your default branch
+      - main  # This triggers the workflow on push events to the main branch.
 
 jobs:
-  deploy:
+  push_changes:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-   
+        uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Set up Python and Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install huggingface_hub
 
-      - name: Deploy to Hugging Face Spaces
+      - name: Login to Hugging Face
         env:
-          HF_TOKEN: ${{ secrets.HF }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          huggingface-cli login --token $HF_TOKEN
-          huggingface-cli repo create Fit_RAG --type space --space_sdk gradio --yes
-          huggingface-cli repo push
+          huggingface-cli login --token $HF_TOKEN --add-to-git-credential
+
+      - name: Clone Hugging Face Space Repository
+        run: |
+          git clone https://huggingface.co/spaces/KedharNarayanan/Fit_RAG
+          cd Fit_RAG
+
+      - name: Commit and Push Changes
+        run: |
+          cd Fit_RAG
+          git config --global kedharnarayanan@gmail.com
+          git config --global KedharNarayanan
+          git add .
+          git commit -m "Update files"
+          git push origin main
