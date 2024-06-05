@@ -1,5 +1,7 @@
 name: Deploy to Hugging Face Spaces
-
+runs:
+  using: 'node20'
+  main: 'main.js'
 on:
   push:
     branches:
