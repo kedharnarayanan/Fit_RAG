@@ -31,8 +31,4 @@ jobs:
       - name: Commit and Push Changes
         run: |
           cd Fit_RAG
-          git config --global kedharnarayanan@gmail.com
-          git config --global KedharNarayanan
-          git add .
-          git commit -m "Update files"
           git push origin main
