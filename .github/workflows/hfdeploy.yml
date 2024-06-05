@@ -23,4 +23,6 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF }}
         run: |
-         git push https://HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/KedharNarayanan/FIT_RAG
+          huggingface-cli login --token $HF_TOKEN
+          huggingface-cli repo create Fit_RAG --type space --space_sdk gradio
+          huggingface-cli repo push
